@@ -27,7 +27,7 @@ export default {
 
 img {
   height: auto;
-  filter: drop-shadow(0.5em 0.5em 1em rgb(85, 85, 85));
+  filter: drop-shadow(0.5em 0.5em 0.5em rgb(85, 85, 85));
 }
 
 @media screen and (min-width: 1024px) {
