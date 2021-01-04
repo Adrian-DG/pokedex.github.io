@@ -25,9 +25,7 @@ export default new Vuex.Store({
       });
 
       data.results.forEach((item) => {
-        if (endPoint == "pokemon") {
-          context.dispatch("fetchPokemonByID", { url: item.url });
-        }
+        context.dispatch("fetchPokemonByID", { url: item.url });
       });
     },
 

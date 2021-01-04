@@ -1,22 +1,18 @@
 <template>
   <b-container fluid id="home">
     <banner />
+    <tabs />
   </b-container>
 </template>
 
 <script>
 import banner from "../components/banner.vue";
-
+import Tabs from "../components/tabs.vue";
 export default {
   name: "home",
-  created() {
-    this.$store.dispatch("fetchApi", { endPoint: "pokemon" });
-  },
-  mounted() {
-    console.log(this.$store.getters.getPokemons);
-  },
   components: {
     banner,
+    Tabs,
   },
 };
 </script>

@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-const lazyLoading = (view) => {
-  return () => import(`@/views/${view}.vue`);
+const lazyLoading = (dir, res) => {
+  return () => import(`@/${dir}/${res}.vue`);
 };
 
 Vue.use(VueRouter);
@@ -11,7 +11,17 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: lazyLoading("home"),
+    component: lazyLoading("views", "home"),
+    children: [
+      {
+        path: "/pokemons",
+        component: lazyLoading("components", "pokemon-list"),
+      },
+      {
+        path: "/regions",
+        component: lazyLoading("components", "region-list"),
+      },
+    ],
   },
 ];
 

@@ -1,5 +1,5 @@
 <template>
-  <b-navbar>
+  <b-navbar type="dark" variant="dark">
     <b-navbar-brand>Pokedex</b-navbar-brand>
   </b-navbar>
 </template>
@@ -10,13 +10,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.navbar {
-  background-color: rgb(228, 127, 127);
-}
-.navbar-brand {
-  color: rgb(255, 255, 145);
-  font-weight: bold;
-  font-size: 1.3rem;
-}
-</style>
+<style scoped></style>
