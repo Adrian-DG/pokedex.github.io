@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <div class="tab-container">
     <b-card title="Explorer" np-body>
       <b-card-header header-tag="nav">
         <b-nav card-header tabs>
@@ -11,7 +11,7 @@
         <router-view></router-view>
       </b-card-body>
     </b-card>
-  </b-container>
+  </div>
 </template>
 
 <script>
@@ -20,4 +20,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.tab-container {
+  width: 100%;
+}
+</style>

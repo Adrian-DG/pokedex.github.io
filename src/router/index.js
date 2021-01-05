@@ -9,15 +9,22 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
     name: "home",
+    path: "/",
     component: lazyLoading("views", "home"),
     children: [
       {
+        name: "list",
         path: "/pokemons",
         component: lazyLoading("components", "pokemon-list"),
       },
       {
+        name: "details",
+        path: "pokemon/:name",
+        component: lazyLoading("components", "pokemon-details"),
+      },
+      {
+        name: "regions",
         path: "/regions",
         component: lazyLoading("components", "region-list"),
       },

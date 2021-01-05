@@ -8,6 +8,17 @@ const limitParam = "?limit=10";
 
 Vue.use(Vuex);
 
+const pokemonFactory = (data) => {
+  const pokemon = {
+    id: data.id,
+    name: data.name,
+    sprites: data.sprites,
+    types: data.types,
+  };
+
+  return pokemon;
+};
+
 export default new Vuex.Store({
   state: {
     pokemons: [],
@@ -16,6 +27,9 @@ export default new Vuex.Store({
   mutations: {
     pushPokemon: (state, { pokemon }) => {
       state.pokemons.push(pokemon);
+    },
+    setCurrentPokemon: (state, { pokemon }) => {
+      state.currentPokemon = pokemon;
     },
   },
   actions: {
@@ -34,18 +48,15 @@ export default new Vuex.Store({
         responseType: "json",
       });
 
-      const pokemon = {
-        name: data.name,
-        sprites: data.sprites,
-        types: data.types,
-      };
-
-      context.commit("pushPokemon", { pokemon });
+      context.commit("pushPokemon", { pokemon: pokemonFactory(data) });
     },
   },
   getters: {
     getPokemons: (state) => {
       return state.pokemons;
+    },
+    getCurrentPokemon: (state) => {
+      return state.currentPokemon;
     },
   },
   modules: {},

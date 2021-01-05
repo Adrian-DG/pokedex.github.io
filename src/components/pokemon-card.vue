@@ -7,7 +7,7 @@
   >
     <b-card-text>
       <p>
-        <strong>{{ updatedName }}</strong> is a pokemon of the following type:
+        Nature types:
       </p>
       <span
         class="type-tag"
@@ -17,7 +17,7 @@
         {{ type.type.name }}
       </span>
     </b-card-text>
-    <b-button block variant="info">Details</b-button>
+    <b-button block variant="info" @click="ToDetails()">Details</b-button>
   </b-card>
 </template>
 
@@ -32,6 +32,12 @@ export default {
       return name.join("");
     },
   },
+  methods: {
+    ToDetails() {
+      this.$store.commit("setCurrentPokemon", { pokemon: this.pokemon });
+      this.$router.replace(`/pokemon/${this.pokemon.name}`);
+    },
+  },
 };
 </script>
 
@@ -41,6 +47,8 @@ export default {
 }
 .card-title {
   font-size: 1.2rem;
+  font-weight: 800;
+  color: rgb(77, 77, 77);
 }
 .type-tag {
   background-color: gainsboro;

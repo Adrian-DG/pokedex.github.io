@@ -2,20 +2,16 @@
   <b-container fluid>
     <b-row>
       <b-col class="title" col md="6" lg="6">
-        <h4>Pokemons</h4>
+        <h5>Pokemons ({{ RequestSize }})</h5>
       </b-col>
       <b-col class="search" col sm="12" md="6" lg="6">
-        <b-form @submit.prevent="SearchByName">
-          <b-input-group>
-            <b-form-input
-              v-model="pokemonName"
-              placeholder="pokemon name"
-            ></b-form-input>
-            <b-input-group-append>
-              <b-button type="submit" variant="secondary">search</b-button>
-            </b-input-group-append>
-          </b-input-group>
-        </b-form>
+        <b-input-group append="name">
+          <b-form-input
+            v-model="pokemonName"
+            @input="SearchByName()"
+            placeholder="pokemon name"
+          ></b-form-input>
+        </b-input-group>
       </b-col>
     </b-row>
     <hr />
@@ -47,9 +43,14 @@ export default {
   beforeMount() {
     this.pokemons = this.$store.getters.getPokemons;
   },
+  computed: {
+    RequestSize() {
+      return this.pokemons.length;
+    },
+  },
   methods: {
     SearchByName() {
-      this.$store.dispatch("fetchPokemonByName", { name: this.pokemonName });
+      // console.log(this.pokemonName);
     },
   },
 };
