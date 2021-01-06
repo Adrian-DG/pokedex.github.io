@@ -28,6 +28,11 @@ const routes = [
         path: "/regions",
         component: lazyLoading("components", "region-list"),
       },
+      {
+        name: "details",
+        path: "region/:name",
+        component: lazyLoading("components", "region-details"),
+      },
     ],
   },
 ];

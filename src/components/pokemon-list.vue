@@ -21,6 +21,12 @@
         <pokemon-card :pokemon="pokemon" />
       </li>
     </ul>
+    <hr />
+    <b-row>
+      <b-col cols="12" class="d-flex flex-row justify-content-center">
+        <b-button @click="fetchMore()" btn variant="secondary">more</b-button>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
@@ -38,7 +44,9 @@ export default {
     "pokemon-card": PokemonCard,
   },
   created() {
-    this.$store.dispatch("fetchApi", { endPoint: "pokemon" });
+    if (!this.$store.state.pokemons.length > 0) {
+      this.$store.dispatch("fetchApi", { endPoint: "pokemon" });
+    }
   },
   beforeMount() {
     this.pokemons = this.$store.getters.getPokemons;
@@ -51,6 +59,9 @@ export default {
   methods: {
     SearchByName() {
       // console.log(this.pokemonName);
+    },
+    fetchMore() {
+      this.$store.dispatch("fetchMore", { endPoint: "pokemon" });
     },
   },
 };

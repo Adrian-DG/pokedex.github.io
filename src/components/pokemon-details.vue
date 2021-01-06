@@ -2,10 +2,10 @@
   <b-container fluid>
     <b-card no-body>
       <b-row class="poke-body" no-gutters>
-        <b-col class="poke-img" col lg="4" md="4">
+        <b-col class="poke-img" col lg="2" md="4">
           <b-card-img :src="pokemon.sprites.front_default"></b-card-img>
         </b-col>
-        <b-col class="poke-info" col lg="8" md="8">
+        <b-col class="poke-info" col lg="10" md="8">
           <div
             class="card-header d-flex flex-row justify-content-between align-items-center"
           >

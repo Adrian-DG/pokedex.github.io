@@ -22,11 +22,15 @@ const pokemonFactory = (data) => {
 export default new Vuex.Store({
   state: {
     pokemons: [],
+    regions: [],
     currentPokemon: "",
   },
   mutations: {
     pushPokemon: (state, { pokemon }) => {
       state.pokemons.push(pokemon);
+    },
+    pushRegion: (state, { region }) => {
+      state.regions.push(region);
     },
     setCurrentPokemon: (state, { pokemon }) => {
       state.currentPokemon = pokemon;
@@ -39,7 +43,11 @@ export default new Vuex.Store({
       });
 
       data.results.forEach((item) => {
-        context.dispatch("fetchPokemonByID", { url: item.url });
+        if (endPoint == "pokemon") {
+          context.dispatch("fetchPokemonByID", { url: item.url });
+        } else if (endPoint == "region") {
+          context.commit("pushRegion", { region: item });
+        }
       });
     },
 
@@ -50,6 +58,16 @@ export default new Vuex.Store({
 
       context.commit("pushPokemon", { pokemon: pokemonFactory(data) });
     },
+
+    fetchMore: async ({ state, dispatch }, { endPoint }) => {
+      const pokemon_qty = state.pokemons.length;
+      const to_fetch = pokemon_qty + 10;
+      for (let counter = pokemon_qty; counter < to_fetch; counter++) {
+        dispatch("fetchPokemonByID", {
+          url: `${API_URL}${endPoint}/${counter} `,
+        });
+      }
+    },
   },
   getters: {
     getPokemons: (state) => {
@@ -57,6 +75,9 @@ export default new Vuex.Store({
     },
     getCurrentPokemon: (state) => {
       return state.currentPokemon;
+    },
+    getRegions: (state) => {
+      return state.regions;
     },
   },
   modules: {},
