@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2a484c51"],{"10f3":function(n,e,t){n.exports=t.p+"img/pokemon-logo.e1b54715.png"},"7a01":function(n,e,t){},"7ae9":function(n,e,t){"use strict";t("7a01")},b9ad:function(n,e,t){"use strict";t.r(e);var o=function(){var n=this,e=n.$createElement,o=n._self._c||e;return o("b-jumbotron",[o("b-img",{attrs:{src:t("10f3")}})],1)},a=[],c={name:"banner"},r=c,u=(t("7ae9"),t("2877")),s=Object(u["a"])(r,o,a,!1,null,"029e01d9",null);e["default"]=s.exports}}]);
+//# sourceMappingURL=chunk-2a484c51.381418c6.js.map
