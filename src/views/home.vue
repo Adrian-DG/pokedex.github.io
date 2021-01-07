@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 #home {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 </style>
